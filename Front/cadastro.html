@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de gastos</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="navbar">
+        <nav id="navbar">
+            <ul class="nav-list">
+                <a href="index.html">
+                    <li>HOME</li>
+                </a>
+                <a href="cadastro.html">
+                    <li>CADASTRAR</li>
+                </a>
+                <a href="view.html">
+                    <li>VISUALIZAR</li>
+                </a>
+            </ul>
+        </nav>
+    </div>
+    <div id="message-container">
+        <div id="messages">
+        </div>
+        <div id="progressBar"></div>
+    </div>
+    <div class="container">
+        <div class="form-area">
+            <h1 id="title">Adicionar Gasto</h1>
+            <form id="form">
+                <div class="form-group">
+                    <select class="form-select" id="categoria" aria-label="Select categoria">
+                        <option selected>Seleciona uma categoria</option>
+                        <option value="1">Alimentacao</option>
+                        <option value="2">Saude</option>
+                        <option value="3">Lazer</option>
+                        <option value="4">Conta fixa</option>
+                        <option value="5">Servicos</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="desc">Descricao do Gasto</label>
+                    <input type="text" class="form-control" id="desc" aria-describedby="desc"
+                        placeholder="Supermercado Carol">
+                </div>
+                <div class="form-group">
+                    <label for="date">Data</label>
+                    <input type="text" class="form-control" id="date" aria-describedby="date"
+                        placeholder="14/01/2023">
+                </div>
+                <div class="form-group">
+                    <label for="desc">Valor gasto</label>
+                    <input type="number" class="form-control" id="value" aria-describedby="value" placeholder="R$ 0,00">
+                </div>
+                <button type="button" class="btn btn-primary" id="botao">Adicionar</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="./scripts/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "gastos",
+  "version": "1.0.0",
+  "description": "aplicacao pra controlar gastos",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "joaovmundel",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.7.0"
+  }
+}
