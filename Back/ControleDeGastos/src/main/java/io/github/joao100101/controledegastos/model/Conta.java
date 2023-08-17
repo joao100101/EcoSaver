@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,8 +25,13 @@ public class Conta {
     @NotNull(message = "Descricao nao pode ser nula.")
     @NotEmpty(message =  "Descricao nao pode estar vazia.")
     private String description;
+    @NotNull(message = "O valor nao pode ser nulo")
     @Min(value = 0, message = "Sao aceitos apenas valores positivos.")
     private Double value;
+    @NotNull(message = "A data nao pode ser nula")
+    private LocalDate date;
+
+
 
     @ManyToOne
     @JoinColumn(name = "categoria_id", nullable = false)
@@ -33,6 +40,7 @@ public class Conta {
     public Conta(ContaDTO contaDTO){
         this.id = contaDTO.getId();
         this.description = contaDTO.getDescription();
+        this.date = contaDTO.getDate();
         this.value = contaDTO.getValue();
     }
 

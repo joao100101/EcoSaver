@@ -1,6 +1,5 @@
 
 const botao = document.querySelector("#botao");
-const date = document.querySelector("#date");
 
 async function postData(url = "", data = {}) {
     const response = await fetch(url, {
@@ -48,13 +47,16 @@ function getCategorias() {
 
 function saveOnDatabase() {
     let desc = document.querySelector("#desc").value;
-    let value = Number(document.querySelector("#value").value);
+    let date = document.querySelector("#date").value;
+    let valueCurrency = document.querySelector("#value").value;
+    let value = convertCurrencyToDouble(valueCurrency);
     let categoria = document.querySelector("#categoria");
     let categoriaName = categoria.options[categoria.selectedIndex].text
 
     console.log("VALORESSS")
     console.log(JSON.stringify({
         description: desc,
+        date: date,
         value: value,
         categoriaName: categoriaName
     }))
@@ -63,6 +65,7 @@ function saveOnDatabase() {
         method: "POST",
         data: JSON.stringify({
             description: desc,
+            date: date,
             value: value,
             categoriaName: categoriaName
         }),
@@ -72,11 +75,16 @@ function saveOnDatabase() {
         success: function (data) {
             showMessage("Conta adicionada com sucesso.", false)
             document.querySelector("#desc").value = "";
+            document.querySelector("#date").value = "";
             document.querySelector("#value").value = null;
             categoria.selectedIndex = 0;
         },
         error: function (error){
-            showMessage(error.responseJSON.message, true);
+            if(error.responseJSON != undefined){
+                showMessage(error.responseJSON.message, true);
+            }else{
+                showMessage("Erro de comunicação com o servidor.", true);
+            }
         }
     });
 }
@@ -130,15 +138,12 @@ function showMessage(message, error) {
     }, 5000);
 }
 
+function convertCurrencyToDouble(value){
+    let output = value;
+    output = output.replace("R$", "").replace(" ", "").replace(".", "");
+    output = output.replace(",", ".")
+    return Number(output);
+}
+
 
 botao.addEventListener("click", saveOnDatabase)
-
-
-
-date.addEventListener('input', (e) =>{
-    e.value = dateFormat(e.value);
-});
-function dateFormat(el){
-    value = el.value;       
-    el.value = value.replace(/^([\d]{4})([\d]{2})([\d]{2})$/,"$1/$2/$3");        
-}
