@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -37,6 +38,10 @@ public class User implements UserDetails{
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private UserRole role = UserRole.USER;
+    @OneToMany(mappedBy = "user")
+    private List<Conta> contas;
+
+
 
     public User(String name, String email, String username, String password, UserRole role){
         this.name = name;

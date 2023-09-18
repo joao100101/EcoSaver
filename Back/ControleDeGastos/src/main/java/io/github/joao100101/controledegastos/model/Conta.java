@@ -36,12 +36,16 @@ public class Conta {
     @ManyToOne
     @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    public Conta(ContaDTO contaDTO){
+    public Conta(ContaDTO contaDTO, User user){
         this.id = contaDTO.getId();
         this.description = contaDTO.getDescription();
         this.date = contaDTO.getDate();
         this.value = contaDTO.getValue();
+        this.user = user;
     }
 
 }

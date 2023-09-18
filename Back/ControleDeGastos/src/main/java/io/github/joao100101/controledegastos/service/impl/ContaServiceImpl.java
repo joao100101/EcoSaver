@@ -3,9 +3,11 @@ package io.github.joao100101.controledegastos.service.impl;
 import io.github.joao100101.controledegastos.exception.ContaNotFoundException;
 import io.github.joao100101.controledegastos.model.Categoria;
 import io.github.joao100101.controledegastos.model.Conta;
+import io.github.joao100101.controledegastos.model.User;
 import io.github.joao100101.controledegastos.model.dto.ContaDTO;
 import io.github.joao100101.controledegastos.repository.ContaRepository;
 import io.github.joao100101.controledegastos.service.ContaService;
+import io.github.joao100101.controledegastos.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +19,15 @@ public class ContaServiceImpl implements ContaService {
 
     private final ContaRepository contaRepository;
     private final CategoriaServiceImpl categoriaService;
+    private final UserServiceImpl userService;
 
     private static final String CONTA_NOT_FOUND = "Conta nao encontrada com identificador: ";
 
     @Autowired
-    public ContaServiceImpl(ContaRepository contaRepository, CategoriaServiceImpl categoriaService) {
+    public ContaServiceImpl(ContaRepository contaRepository, CategoriaServiceImpl categoriaService, UserServiceImpl userService) {
         this.categoriaService = categoriaService;
         this.contaRepository = contaRepository;
+        this.userService = userService;
     }
 
     @Override
@@ -60,7 +64,8 @@ public class ContaServiceImpl implements ContaService {
     @Override
     public ContaDTO create(ContaDTO contaDTO) {
         Categoria categoria = categoriaService.findByName(contaDTO.getCategoriaName());
-        Conta conta = new Conta(contaDTO);
+        User user = userService.findByEmail(contaDTO.getUserEmail());
+        Conta conta = new Conta(contaDTO, user);
         conta.setCategoria(categoria);
         return new ContaDTO(this.contaRepository.save(conta));
     }
