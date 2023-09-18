@@ -3,6 +3,7 @@ package io.github.joao100101.controledegastos.controller;
 import io.github.joao100101.controledegastos.model.Conta;
 import io.github.joao100101.controledegastos.model.dto.ContaDTO;
 import io.github.joao100101.controledegastos.service.impl.ContaServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ import java.util.List;
 @RequestMapping("/api/contas")
 public class ContaController {
 
-    private ContaServiceImpl contaService;
+    private final ContaServiceImpl contaService;
 
     @Autowired
     public ContaController(ContaServiceImpl contaService) {
@@ -37,7 +38,7 @@ public class ContaController {
     }
 
     @PostMapping
-    public ResponseEntity<ContaDTO> create(@RequestBody ContaDTO conta){
+    public ResponseEntity<ContaDTO> create(@RequestBody @Valid ContaDTO conta){
         ContaDTO saved = contaService.create(conta);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
@@ -47,7 +48,7 @@ public class ContaController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<ContaDTO> update(@PathVariable Long id, @RequestBody Conta conta){
+    public ResponseEntity<ContaDTO> update(@PathVariable Long id, @RequestBody ContaDTO conta){
         return ResponseEntity.ok(contaService.updateById(id, conta));
     }
 

@@ -66,9 +66,13 @@ public class ContaServiceImpl implements ContaService {
     }
 
     @Override
-    public ContaDTO updateById(Long id, Conta conta) {
-        findById(id);
-        conta.setId(id);
-        return new ContaDTO(this.contaRepository.save(conta));
+    public ContaDTO updateById(Long id, ContaDTO conta) {
+        Conta existentConta = findById(id);
+        existentConta.setId(id);
+        existentConta.setCategoria(categoriaService.findByName(conta.getCategoriaName()));
+        existentConta.setDate(conta.getDate());
+        existentConta.setValue(conta.getValue());
+        existentConta.setDescription(conta.getDescription());
+        return new ContaDTO(this.contaRepository.save(existentConta));
     }
 }

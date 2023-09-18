@@ -29,22 +29,29 @@ public class User implements UserDetails{
     @Length(min = 3, message = "O nome nao pode ser vazio")
     private String name;
     @Column(nullable = false, unique = true)
-    private String cpf;
-    @Column(nullable = false, unique = true)
     private String email;
-    private String phone;
+    @Column(nullable = false, unique = true)
+    private String username;
     @Column(nullable = false)
     private String password;
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private UserRole role = UserRole.USER;
 
-
-    public User(String name, String cpf, String email, String password, UserRole role){
+    public User(String name, String email, String username, String password, UserRole role){
         this.name = name;
-        this.cpf = cpf;
         this.email = email;
         this.password = password;
         this.role = role;
+        this.username = username;
+    }
+
+
+    public User(String name, String email, String username, String password){
+        this.name = name;
+        this.email = email;
+        this.username = username;
+        this.password = password;
     }
 
     @Override
@@ -55,7 +62,7 @@ public class User implements UserDetails{
 
     @Override
     public String getUsername() {
-        return cpf;
+        return username;
     }
 
     @Override

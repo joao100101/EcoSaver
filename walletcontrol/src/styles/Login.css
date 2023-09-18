@@ -1,0 +1,109 @@
+.login-container {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(235, 12, 46);
+    background: linear-gradient(90deg, rgba(235, 12, 46, 1) 0%, rgba(146, 20, 213, 1) 47%, rgba(0, 138, 255, 1) 100%);
+}
+
+.login-area {
+    width: 500px;
+    height: 500px;
+    border-radius: 1rem;
+    background-color: rgba(0, 0, 0, 0.918);
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.register-area{
+    width: 500px;
+    height: 650px;
+    border-radius: 1rem;
+    background-color: rgba(0, 0, 0, 0.918);
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.login-form-area {
+    width: 70%;
+    display: flex;
+    margin-top: 3rem;
+    flex-direction: column;
+}
+
+#login-title {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+#passwordInput,
+#emailInput, #nameInput {
+    caret-color: white;
+    color: white;
+    width: 100%;
+    background-color: black;
+    border-color: cornflowerblue;
+    border-radius: 5rem;
+    height: 3rem;
+}
+
+#passwordInput {
+    margin-bottom: .8rem;
+}
+
+#passwordInput::placeholder,
+#emailInput::placeholder, #nameInput::placeholder {
+    text-align: center;
+    color: #777;
+}
+
+.form-group {
+    margin: 1.3rem;
+}
+
+
+.forgot-password {
+    color: #777;
+}
+
+.forgot-password:hover {
+    color: #888787;
+    cursor: pointer;
+}
+
+
+
+#btn-login {
+    margin-top: 1rem;
+    width: 60%;
+    background-color: black;
+    border-color: green;
+    border-radius: 5rem;
+}
+
+#btn-login:disabled{
+    border-color: rgb(168, 39, 39);
+}
+
+
+#btn-login:hover {
+    background-color: rgb(26, 26, 26);
+}
+
+.register-btn-area{
+    margin-top: 1rem;
+    color: #777;
+}
+
+#register{
+    text-decoration: none;
+}

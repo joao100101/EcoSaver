@@ -14,5 +14,5 @@ public interface ContaService {
     void deleteById(Long id);
     ContaDTO create(Conta conta);
     ContaDTO create(ContaDTO contaDTO);
-    ContaDTO updateById(Long id, Conta conta);
+    ContaDTO updateById(Long id, ContaDTO conta);
 }

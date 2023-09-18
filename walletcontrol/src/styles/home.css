@@ -1,0 +1,10 @@
+.chart-area{
+    width: 100%;
+    display: inline-flex;
+    padding: 3rem;
+}
+
+.title{
+    margin-top: 2rem;
+    text-align: center;
+}

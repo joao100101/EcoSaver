@@ -25,7 +25,7 @@ public class Conta {
     @NotNull(message = "Descricao nao pode ser nula.")
     @NotEmpty(message =  "Descricao nao pode estar vazia.")
     private String description;
-    @NotNull(message = "O valor nao pode ser nulo")
+    @NotNull(message = "O valor gasto nao pode ser nulo")
     @Min(value = 0, message = "Sao aceitos apenas valores positivos.")
     private Double value;
     @NotNull(message = "A data nao pode ser nula")
